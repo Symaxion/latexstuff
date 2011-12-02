@@ -18,12 +18,18 @@
 \newcommand{\dateval}{<Missing Date>}
 \renewcommand{\date}[1]{\renewcommand{\dateval}{#1}}
 
+\newcommand{\authorval}{Frank Erens}
+\renewcommand{\author}[1]{\renewcommand{\authorval}{#1}}
+
+\newcommand{\disciplineval}{1e Bachelor Informatica}
+\newcommand{\discipline}[1]{\renewcommand{\disciplineval{#1}}
+
 \newcommand{\makeheader}{
     \noindent\resizebox{\textwidth}{!}{
     \begin{tabular}{m{0.50\textwidth}m{0.15\textwidth}m{0.35\textwidth}}
     \multirow{3}{*}{\centering\includegraphics[width=0.45\textwidth]{uh-logo} } &
-    \multicolumn{2}{l}{\textbf{Frank Erens}} \\
-     & \multicolumn{2}{l}{\textbf{1e Bachelor Informatica}} \\
+    \multicolumn{2}{l}{\textbf{\authorval}} \\
+     & \multicolumn{2}{l}{\textbf{\disciplineval}} \\
      & \textbf{Datum:} & \dateval \\
      & & \\
      & {\textbf{Vak:}} & {\courseval} \\
