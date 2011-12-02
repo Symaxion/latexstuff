@@ -1,0 +1,45 @@
+\ProvidesPackage{uhheader}
+
+\usepackage{multirow}
+\usepackage[dutch]{babel}
+\usepackage{a4wide}
+\usepackage{graphicx}
+\usepackage{array}
+
+\newcommand{\titleval}{<Missing Title>}
+\renewcommand{\title}[1]{\renewcommand{\titleval}{#1}}
+
+\newcommand{\docentval}{<Missing Docent>}
+\newcommand{\docent}[1]{\renewcommand{\docentval}{#1}}
+
+\newcommand{\courseval}{<Missing Course>}
+\newcommand{\course}[1]{\renewcommand{\courseval}{#1}}
+
+\newcommand{\dateval}{<Missing Date>}
+\renewcommand{\date}[1]{\renewcommand{\dateval}{#1}}
+
+\newcommand{\makeheader}{
+    \noindent\resizebox{\textwidth}{!}{
+    \begin{tabular}{m{0.50\textwidth}m{0.15\textwidth}m{0.35\textwidth}}
+    \multirow{3}{*}{\centering\includegraphics[width=0.45\textwidth]{uh-logo} } &
+    \multicolumn{2}{l}{\textbf{Frank Erens}} \\
+     & \multicolumn{2}{l}{\textbf{1e Bachelor Informatica}} \\
+     & \textbf{Datum:} & \dateval \\
+     & & \\
+     & {\textbf{Vak:}} & {\courseval} \\
+    {\scriptsize\textsf{www.uhasselt.be}} & \multirow{4}{*}{\textbf{Docent:}} &
+    \multirow{4}{*}{\docentval}  \\
+    {\scriptsize\textsf{Universiteit Hasselt \textbar\ Campus Diepenbeek}} & \\
+    {\scriptsize\textsf{Agoralaan \textbar\ Gebouw D \textbar\ BE-3590 Diepenbeek
+    \textbar\ Belgi\"e}} & & \\
+    {\scriptsize\textsf{Tel.: +32(0)11 26 28 11}} & & \\
+
+    \hline
+    \end{tabular}
+    }
+
+    \bigskip
+
+    \begin{center}\textbf{\textsf{\Large{\titleval}}}\end{center}
+    
+}

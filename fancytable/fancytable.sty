@@ -1,0 +1,33 @@
+\ProvidesPackage{fancytable}
+
+\usepackage[table]{xcolor}
+\usepackage{ifthen}
+\usepackage{longtable}
+\usepackage{array}
+
+\definecolor{lightgrey}{rgb}{0.9,0.9,0.9}
+\definecolor{white}{rgb}{1,1,1}
+
+\newcommand{\fancyrowcolors}[1] {
+    \ifthenelse{\isodd{#1}} {
+        \rowcolors{1}{lightgrey}{white}
+    } {
+        \rowcolors{1}{white}{lightgrey}
+    }
+}
+
+\newenvironment{fancytable}[2]{\medskip\par\noindent\fancyrowcolors{#2}\begin{tabular}{#1}
+                                      \hline}
+                              {\hline \hline \end{tabular}\medskip}
+
+\newenvironment{fancylongtable}[2]{\fancyrowcolors{#2}\begin{longtable}{#1}
+                                      \hline}
+                              {\hline \hline \end{longtable}}
+
+\newcommand{\tbh}[1]{{\cellcolor{black}\textcolor{white}{\textbf{#1}}}}
+
+\newcolumntype{C}[1]{>{\centering\arraybackslash}p{#1}}
+
+\newcolumntype{e}{>{$}c<{$}}
+\newcolumntype{E}[1]{>{\centering\arraybackslash$}p{#1}<{$}}
+
