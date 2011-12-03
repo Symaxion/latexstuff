@@ -6,6 +6,7 @@
 \RequirePackage{array}
 \RequirePackage{longtable}
 \RequirePackage{tabu}
+\RequirePackage{xargs}
 
 \definecolor{lightgrey}{rgb}{0.9,0.9,0.9}
 \definecolor{white}{rgb}{1,1,1}
@@ -18,9 +19,14 @@
     }
 }
 
-\newenvironment{fancytable}[3][l]{\medskip\par\noindent\fancyrowcolors{#3}\begin{longtabu}[#1]{#2}
-                                      \hline}
-                              {\hline \hline \end{longtabu}\medskip}
+\newenvironment{fancytableimpl}[4]{\fancyrowcolors{#3}\begin{#4}[#1]{#2}\hline}
+                              {\hline \hline \end{tabu}}
+
+\newenvironment{fancytable}[3][l]{\medskip\par\noindent\hskip -1.7 ex
+    \begin{fancytableimpl}{#1}{#2}{#3}{tabu}}{\end{fancytableimpl}\medskip}
+
+\newenvironment{fancylontable}[3][l]{
+    \begin{fancytableimpl}{#1}{#2}{#3}{longtabu}}{\end{fancytableimpl}}
 
 \newcommand{\tbh}[1]{{\cellcolor{black}\textcolor{white}{\textbf{#1}}}}
 \newcommand{\teh}[1]{\tbh{$#1$}}
