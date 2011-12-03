@@ -1,2 +1,24 @@
+# Gitignore file.
+
+# Invisible files
+.*
+!.gitignore
+
+# TeX output
+*.pdf
+*.aux
+
+# Backup and patch files
+*~
+*.bak
+*.orig
+*.rej
+*.patch
+
+# Things I have installed that shouldn't be committed
 applekeys/**
 local/**
+
+# OS Specific
+.DS_Store
+
