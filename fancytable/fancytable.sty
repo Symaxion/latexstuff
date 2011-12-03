@@ -18,7 +18,7 @@
     }
 }
 
-\newenvironment{fancytable}[2]{\medskip\par\noindent\fancyrowcolors{#2}\begin{longtabu}{#1}
+\newenvironment{fancytable}[3][l]{\medskip\par\noindent\fancyrowcolors{#3}\begin{longtabu}[#1]{#2}
                                       \hline}
                               {\hline \hline \end{longtabu}\medskip}
 
