@@ -50,3 +50,22 @@
     \begin{center}\textbf{\textsf{\Large{\titleval}}}\end{center}
     
 }
+
+% Nice footers
+\newlength{\pagenumberwidth}
+\newlength{\hlinewidth}
+
+\usepackage{fancyhdr}
+
+\pagestyle{fancy}
+
+\fancyhead{}
+\cfoot{ %
+    \settowidth{\pagenumberwidth}{\phantom{~\thepage}}
+    \setlength{\hlinewidth}{\linewidth}
+    \addtolength{\hlinewidth}{-\pagenumberwidth}
+    \noindent\rule[.5ex]{\hlinewidth}{0.1mm}~\thepage
+}
+
+\renewcommand{\headrulewidth}{0pt}
+
