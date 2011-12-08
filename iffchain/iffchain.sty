@@ -1,0 +1,9 @@
+\ProvidesPackage{iffchain}
+
+\newcommand{\vsymb}[2]{\\ \phantom{\textrm{#1}~~}
+    #2 ~~\textrm{#1}\\}
+
+\newcommand{\viff}[1]{\vsymb{(#1)}{\Updownarrow}}
+\newcommand{\vthen}[1]{\vsymb{(#1)}{\Downarrow}}
+
+\newenvironment{iffchain}{\[\begin{array}{c}}{\end{array}\]}
