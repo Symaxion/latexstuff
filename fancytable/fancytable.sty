@@ -19,13 +19,16 @@
     }
 }
 
-\newenvironment{fancytableimpl}[4]{\fancyrowcolors{#3}\begin{#4}[#1]{#2}\hline}
-                              {\hline \hline \end{tabu}}
+\newcommand{\fancytabletype}{}
+
+\newenvironment{fancytableimpl}[4]{\renewcommand{\fancytabletype}{#4}
+    \fancyrowcolors{#3}\begin{\fancytabletype}[#1]{#2}\hline}
+    {\hline \hline \end{\fancytabletype}}
 
 \newenvironment{fancytable}[3][l]{\medskip\par\noindent\hskip -1.7 ex
     \begin{fancytableimpl}{#1}{#2}{#3}{tabu}}{\end{fancytableimpl}\medskip}
 
-\newenvironment{fancylontable}[3][l]{
+\newenvironment{fancylongtable}[3][l]{
     \begin{fancytableimpl}{#1}{#2}{#3}{longtabu}}{\end{fancytableimpl}}
 
 \newcommand{\tbh}[1]{{\cellcolor{black}\textcolor{white}{\textbf{#1}}}}
