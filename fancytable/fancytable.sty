@@ -22,7 +22,7 @@
 \newcommand{\fancytabletype}{}
 
 \newenvironment{fancytableimpl}[4]{\renewcommand{\fancytabletype}{#4}
-    \fancyrowcolors{#3}\begin{\fancytabletype}[#1]{#2}\hline}
+    \fancyrowcolors{#3}\begin{\fancytabletype}[#1]{#2}}
     {\hline \hline \end{\fancytabletype}}
 
 \newenvironment{fancytable}[3][l]{\medskip\par\noindent\hskip -1.7 ex
@@ -33,6 +33,7 @@
 
 \newcommand{\tbh}[1]{{\cellcolor{black}\textcolor{white}{\textbf{#1}}}}
 \newcommand{\teh}[1]{\tbh{$\mathbf{#1}$}}
+\newcommand{\tnh}{\cellcolor{white}}
 
 \newcolumntype{C}[1]{>{\centering\arraybackslash}p{#1}}
 
