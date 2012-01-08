@@ -1,6 +1,6 @@
 \ProvidesPackage{fancytable}
 
-\RequirePackage[table]{xcolor}
+\RequirePackage[table,svgnames]{xcolor}
 \RequirePackage{ifthen}
 
 \RequirePackage{array}
@@ -10,21 +10,24 @@
 \RequirePackage{multirow}
 \RequirePackage{graphicx}
 
-\definecolor{lightgrey}{rgb}{0.9,0.9,0.9}
 \definecolor{white}{rgb}{1,1,1}
+
+\newcommand{\fancyfgcolor}{white}
+\newcommand{\fancybgcolor}{black}
 
 \newcommand{\fancyrowcolors}[1] {
     \ifthenelse{\isodd{#1}} {
-        \rowcolors{1}{lightgrey}{white}
+        \rowcolors{1}{\fancybgcolor!10}{white}
     } {
-        \rowcolors{1}{white}{lightgrey}
+        \rowcolors{1}{white}{\fancybgcolor!10}
     }
 }
 
 \newcommand{\fancytabletype}{}
 
 \newenvironment{fancytableimpl}[4]{\renewcommand{\fancytabletype}{#4}
-    \fancyrowcolors{#3}\begin{\fancytabletype}[#1]{#2}}
+    \fancyrowcolors{#3}\begin{\fancytabletype}[#1]{#2}
+            \arrayrulecolor{\fancybgcolor}}
     {\hline \hline \end{\fancytabletype}}
 
 \newenvironment{fancytable}[3][l]{\medskip\par\noindent\hskip -1.7 ex
@@ -33,12 +36,12 @@
 \newenvironment{fancylongtable}[3][l]{
     \begin{fancytableimpl}{#1}{#2}{#3}{longtabu}}{\end{fancytableimpl}}
 
-\newcommand{\tbh}[1]{{\cellcolor{black}\textcolor{white}{\textbf{#1}}}}
+\newcommand{\tbh}[1]{{\cellcolor{\fancybgcolor}\textcolor{\fancyfgcolor}{\textbf{#1}}}}
 \newcommand{\teh}[1]{\tbh{$\mathbf{#1}$}}
 \newcommand{\tnh}{\cellcolor{white}}
 
 \newcommand{\tth}[2]{\multicolumn{#1}{c}{\tbh{#2}}}
-\newcommand{\tlh}[2]{\multirow{-#1}{*}{\cellcolor{black}
+\newcommand{\tlh}[2]{\multirow{-#1}{*}{\cellcolor{\fancybgcolor}
         \rotatebox{90}{\textcolor{white}{\textbf{#2}}}}}
 
 \newcolumntype{C}[1]{>{\centering\arraybackslash}p{#1}}
@@ -46,3 +49,29 @@
 \newcolumntype{e}{>{$}c<{$}}
 \newcolumntype{E}[1]{>{\centering\arraybackslash$}p{#1}<{$}}
 
+%%%%%%%%%
+
+\newcommand{\greentable}{%
+    \renewcommand{\fancybgcolor}{Green}
+    \renewcommand{\fancyfgcolor}{white}
+}
+
+\newcommand{\redtable}{%
+    \renewcommand{\fancybgcolor}{DarkRed}
+    \renewcommand{\fancyfgcolor}{white}
+}
+
+\newcommand{\bluetable}{%
+    \renewcommand{\fancybgcolor}{blue}
+    \renewcommand{\fancyfgcolor}{white}
+}
+
+\newcommand{\yellowtable}{%
+    \renewcommand{\fancybgcolor}{yellow}
+    \renewcommand{\fancyfgcolor}{black}
+}
+
+\newcommand{\blacktable}{%
+    \renewcommand{\fancybgcolor}{black}
+    \renewcommand{\fancyfgcolor}{white}
+}
