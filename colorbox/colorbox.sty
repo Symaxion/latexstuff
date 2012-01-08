@@ -1,0 +1,107 @@
+\ProvidesPackage{colorbox}
+
+\RequirePackage{tabu}
+\RequirePackage[svgnames,table]{xcolor}
+\RequirePackage{graphicx}
+
+\RequirePackage{tikz}
+\usetikzlibrary{calc}
+\usetikzlibrary{shadings}
+\pgfdeclarelayer{colorbox_background}
+\pgfsetlayers{colorbox_background,main}
+
+\newcommand{\@strongcolor}{\relax}
+\newcommand{\strong}[1]{\@strongcolor{\textbf{#1}}}
+
+\newcommand{\@colorboxstyle}{\sffamily}
+
+\newcommand{\@colorboxdark}{}
+\newcommand{\@colorboxlight}{}
+\newcommand{\@colorboxhline}{}
+
+\newenvironment{colorbox@tikznode}{\node (tbl) \bgroup}{\egroup}
+
+\newenvironment{c@lorbox}[2]{%
+\noindent\par
+\renewcommand{\@strongcolor}{\textcolor{#2}}
+\renewcommand{\@colorboxdark}{#2}
+\renewcommand{\@colorboxlight}{#1}
+%
+\renewcommand{\@colorboxhline}{{\color{#1!20}\hline}}
+%
+\begin{tikzpicture}
+%
+\colorbox@tikznode
+    \begin{tabular}{!{\color{#2!20}\vline}@{}p{2mm}@{}!{\color{#2!20}\vline}p{0.90\textwidth}!{\color{#2!20}\vline}}
+        \arrayrulecolor{#2!20}
+        \hline
+        & 
+        
+        \vskip 0.1 cm
+        \begin{tabular}{p{0.1cm}p{0.80\textwidth}p{0.1cm}}
+            & \@colorboxstyle
+            }{ &  \\
+        \end{tabular}
+        \vskip 2 cm
+        
+        \\
+        \hline
+    \end{tabular}
+\endcolorbox@tikznode;
+%
+\shade[top color=\@colorboxlight,bottom color=\@colorboxdark] 
+    ($(tbl.north west)+(0.14cm,-0.14cm)$)
+    rectangle 
+    ($(tbl.south west)+(0.34cm,0.14cm)$);
+
+\begin{pgfonlayer}{colorbox_background}
+\shade[shading=bilinear interpolation,lower left=white,lower right=white,upper right=white,lower right=\@colorboxlight!5]
+    ($(tbl.north west)+(0.34cm,-0.14cm)$)
+    rectangle
+    ($(tbl.south east)+(-0.14cm,0.14cm)$);
+\end{pgfonlayer}
+%
+\renewcommand{\@strongcolor}{\relax}
+\end{tikzpicture}
+}
+
+\newenvironment{bluebox}{\begin{c@lorbox}{cyan}{blue}}{\end{c@lorbox}}
+\newenvironment{greenbox}{\begin{c@lorbox}{LimeGreen}{Green}}{\end{c@lorbox}}
+\newenvironment{redbox}{\begin{c@lorbox}{red}{DarkRed}}{\end{c@lorbox}}
+\newenvironment{yellowbox}{\begin{c@lorbox}{LightGoldenrodYellow}{yellow}}{\end{c@lorbox}}
+\newenvironment{blackbox}{\begin{c@lorbox}{gray}{black}}{\end{c@lorbox}}
+
+\newcommand{\cbpar}{\hfill\medskip\noindent\par}
+
+%%%%%%%%%
+
+\newcommand{\leftcolormark}[1]{%
+\begin{flushright}
+\vskip 0.2 cm \begin{tikzpicture}[scale=0.6]
+%
+\fill[#1] (0,0) arc (-90:90:0.5);
+\shade[left color=white,right color=#1] (0,0) rectangle
+    (-1.3,1);
+%
+\end{tikzpicture}
+\hskip 1.2 cm \phantom{|}
+\end{flushright}}
+
+\newcommand{\rightcolormark}[1]{%
+\vskip 0.2 cm \hskip 1.8 cm \begin{tikzpicture}[scale=0.6]
+%
+\fill[#1] (0,0) arc (90:270:0.5);
+\shade[left color=#1,right color=white] (0,0) rectangle
+    (1.3,-1);
+%
+\end{tikzpicture}}
+
+\newcommand{\colormark}[1]{\marginpar[\leftcolormark{#1}]{\rightcolormark{#1}}}
+
+
+
+\newcommand{\bluemark}{\colormark{blue}}
+\newcommand{\greenmark}{\colormark{Green}}
+\newcommand{\redmark}{\colormark{DarkRed}}
+\newcommand{\yellowmark}{\colormark{yellow}}
+\newcommand{\blackmark}{\colormark{black}}
