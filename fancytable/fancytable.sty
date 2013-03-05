@@ -11,6 +11,7 @@
 \RequirePackage{graphicx}
 
 \def\arraystretch{1.2}
+\tabulinesep=2mm
 
 \definecolor{white}{rgb}{1,1,1}
 
@@ -39,6 +40,7 @@
     \begin{fancytableimpl}{#1}{#2}{#3}{longtabu}}{\end{fancytableimpl}}
 
 \newcommand{\tbh}[1]{{\cellcolor{\fancybgcolor}\textcolor{\fancyfgcolor}{\textbf{#1}}}}
+\newcommand{\tch}[1]{\multicolumn{1}{c}{\tbh{#1}}}
 \newcommand{\teh}[1]{\tbh{$\mathbf{#1}$}}
 \newcommand{\tnh}{\cellcolor{white}}
 
